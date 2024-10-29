@@ -102,69 +102,7 @@ padding: 20px;
 border-radius: 10px;
 z-index: 1000;
 }
-.button-container {
-display: flex;
-justify-content: center;
-}
 </style>
-<script>
-let clickCount = 0;
-
-// функция для обновления и сохранения счётчика
-function updateClickCounter() {
-document.getElementById('click-counter').innerText = clickCount;
-localStorage.setItem('clickCount', clickCount);
-}
-
-function enlargeImage(event) {
-event.preventDefault();
-var img = event.target;
-img.style.transform = 'scale(1.2)';
-clickCount++;
-updateClickCounter();
-
-// создание надписи "+1"
-var plusOne = document.createElement('div');
-plusOne.className = 'plus-one';
-plusOne.innerText = '+1';
-plusOne.style.left = event.clientX - img.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - img.getBoundingClientRect().top + 'px';
-document.getElementById('main').appendChild(plusOne);
-
-setTimeout(function() {
-img.style.transform = 'scale(1)';
-plusOne.remove();
-}, 1000); // через секунду элемент исчезнет
-}
-
-function resetCounter() {
-var button = document.getElementById('buy');
-button.style.transform = 'scale(1.2)';
-setTimeout(function() {
-button.style.transform = '';
-}, 250);
-
-// вывод всплывающего сообщения
-showAlert('Ожидайте листинга, больше информации в боте');
-}
-
-function showAlert(message) {
-var alertBox = document.getElementById('alert-box');
-alertBox.innerText = message;
-alertBox.style.display = 'block';
-setTimeout(function() {
-alertBox.style.display = 'none';
-}, 3000); // через 3 секунды сообщение исчезнет
-}
-
-// восстанавливаем счётчик из localStorage при загрузке страницы
-window.onload = function() {
-if (localStorage.getItem('clickCount')) {
-clickCount = parseInt(localStorage.getItem('clickCount'), 10);
-updateClickCounter();
-}
-}
-</script>
 </head>
 <body>
 <div id="main">
@@ -177,6 +115,63 @@ updateClickCounter();
 <button disabled>Скоро..</button>
 </div>
 <div id="alert-box"></div>
+<audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
+<script>
+let clickCount = 0;
+
+function updateClickCounter() {
+document.getElementById('click-counter').innerText = clickCount;
+localStorage.setItem('clickCount', clickCount);
+}
+
+function enlargeImage(event) {
+event.preventDefault();
+var img = event.target;
+img.style.transform = 'scale(1.2)';
+clickCount++;
+updateClickCounter();
+
+var plusOne = document.createElement('div');
+plusOne.className = 'plus-one';
+plusOne.innerText = '+1';
+plusOne.style.left = event.clientX - img.getBoundingClientRect().left + 'px';
+plusOne.style.top = event.clientY - img.getBoundingClientRect().top + 'px';
+document.getElementById('main').appendChild(plusOne);
+
+setTimeout(function() {
+img.style.transform = 'scale(1)';
+plusOne.remove();
+}, 1000);
+}
+
+function resetCounter() {
+var button = document.getElementById('buy');
+button.style.transform = 'scale(1.2)';
+setTimeout(function() {
+button.style.transform = '';
+}, 250);
+
+showAlert('Ожидайте листинга, больше информации в боте');
+}
+
+function showAlert(message) {
+var alertBox = document.getElementById('alert-box');
+alertBox.innerText = message;
+alertBox.style.display = 'block';
+setTimeout(function() {
+alertBox.style.display = 'none';
+}, 3000);
+}
+
+window.onload = function() {
+if (localStorage.getItem('clickCount')) {
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);
+updateClickCounter();
+}
+
+document.getElementById('background-music').play();
+}
+</script>
 </div>
 </body>
 </html>
