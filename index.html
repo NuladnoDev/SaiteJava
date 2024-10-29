@@ -106,7 +106,7 @@ z-index: 1000;
 <script>
 let clickCount = 0;
 
-// Функция для обновления и сохранения счётчика
+// функция для обновления и сохранения счётчика
 function updateClickCounter() {
 document.getElementById('click-counter').innerText = clickCount;
 localStorage.setItem('clickCount', clickCount);
@@ -119,7 +119,7 @@ img.style.transform = 'scale(1.2)';
 clickCount++;
 updateClickCounter();
 
-// Создание надписи "+1"
+// создание надписи "+1"
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = '+1';
@@ -130,7 +130,7 @@ document.getElementById('main').appendChild(plusOne);
 setTimeout(function() {
 img.style.transform = 'scale(1)';
 plusOne.remove();
-}, 1000); // Через секунду элемент исчезнет
+}, 1000); // через секунду элемент исчезнет
 }
 
 function resetCounter() {
@@ -140,7 +140,7 @@ setTimeout(function() {
 button.style.transform = '';
 }, 250);
 
-// Вывод всплывающего сообщения
+// вывод всплывающего сообщения 
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
@@ -150,10 +150,10 @@ alertBox.innerText = message;
 alertBox.style.display = 'block';
 setTimeout(function() {
 alertBox.style.display = 'none';
-}, 3000); // Через 3 секунды сообщение исчезнет
+}, 3000); // через 3 секунды сообщение исчезнет
 }
 
-// Восстанавливаем счётчик из localStorage при загрузке страницы
+// восстанавливаем счётчик из localStorage при загрузке страницы
 window.onload = function() {
 if (localStorage.getItem('clickCount')) {
 clickCount = parseInt(localStorage.getItem('clickCount'), 10);
@@ -165,7 +165,7 @@ updateClickCounter();
 <body>
 <div id="main">
 <h1>AndrewTap</h1>
-<img id="image" src="https://i.postimg.cc/N0X59kS9/photo-233232322024-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
+<img id="image" src="https://i.postimg.cc/3R7Jy52V/photo-2024-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
 <p>Все совпадения случайны. Персонаж выдумка автора</p>
 <div id="click-counter">0</div>
 <button id="buy" onclick="resetCounter()">Вывести монеты</button>
