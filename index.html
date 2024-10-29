@@ -14,6 +14,7 @@ align-items: center;
 height: 100vh;
 background-color: #f5f5f5;
 margin: 0;
+color: black;
 }
 #main {
 text-align: center;
@@ -56,9 +57,9 @@ height: 50px;
 line-height: 50px;
 border-radius: 50%;
 position: absolute;
-left: 50%;
-transform: translateX(-50%);
-top: -75px;
+right: 50%;
+transform: translateX(150%);
+top: 60px;
 font-size: 20px;
 }
 .plus-one {
@@ -82,6 +83,7 @@ transform: translateY(-20px);
 let clickCount = 0;
 
 function enlargeImage(event) {
+event.preventDefault();
 var img = event.target;
 img.style.transform = 'scale(1.2)';
 clickCount++;
@@ -94,20 +96,21 @@ plusOne.innerText = '+1';
 plusOne.style.left = event.clientX - img.getBoundingClientRect().left + 'px';
 plusOne.style.top = event.clientY - img.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
+
 setTimeout(function() {
 img.style.transform = 'scale(1)';
 plusOne.remove();
-}, 1000); // Через 1 секунду элемент исчезнет
+}, 1000); // Через секунду элемент исчезнет
 }
 </script>
 </head>
 <body>
 <div id="main">
-<div id="click-counter">0</div>
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/2jZ709TX/photo-2024-10-29-18-37-04-1.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
 <p>Все совпадения случайны. Персонаж выдумка автора</p>
 <button id="buy">Вывести монеты</button>
+<div id="click-counter">0</div>
 </div>
 </body>
 </html>
