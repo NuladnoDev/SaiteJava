@@ -102,27 +102,15 @@ padding: 20px;
 border-radius: 10px;
 z-index: 1000;
 }
-.arrow {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-font-size: 2em;
-color: black;
-cursor: pointer;
-user-select: none;
-}
-.arrow-left {
-left: 0;
-}
-.arrow-right {
-right: 0;
+.button-container {
+display: flex;
+justify-content: center;
 }
 </style>
-html
 <script>
 let clickCount = 0;
 
-// Функция для обновления и сохранения счётчика
+// функция для обновления и сохранения счётчика
 function updateClickCounter() {
 document.getElementById('click-counter').innerText = clickCount;
 localStorage.setItem('clickCount', clickCount);
@@ -135,7 +123,7 @@ img.style.transform = 'scale(1.2)';
 clickCount++;
 updateClickCounter();
 
-// Создание надписи "+1"
+// создание надписи "+1"
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = '+1';
@@ -146,7 +134,7 @@ document.getElementById('main').appendChild(plusOne);
 setTimeout(function() {
 img.style.transform = 'scale(1)';
 plusOne.remove();
-}, 1000); // Через секунду элемент исчезнет
+}, 1000); // через секунду элемент исчезнет
 }
 
 function resetCounter() {
@@ -156,7 +144,7 @@ setTimeout(function() {
 button.style.transform = '';
 }, 250);
 
-// Вывод всплывающего сообщения
+// вывод всплывающего сообщения
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
@@ -166,20 +154,15 @@ alertBox.innerText = message;
 alertBox.style.display = 'block';
 setTimeout(function() {
 alertBox.style.display = 'none';
-}, 3000); // Через 3 секунды сообщение исчезнет
+}, 3000); // через 3 секунды сообщение исчезнет
 }
 
-// Восстанавливаем счётчик из localStorage при загрузке страницы
+// восстанавливаем счётчик из localStorage при загрузке страницы
 window.onload = function() {
 if (localStorage.getItem('clickCount')) {
 clickCount = parseInt(localStorage.getItem('clickCount'), 10);
 updateClickCounter();
 }
-}
-
-// Функция для кнопок-стрелок
-function showSoonAlert() {
-showAlert('Скоро..');
 }
 </script>
 </head>
@@ -194,9 +177,6 @@ showAlert('Скоро..');
 <button disabled>Скоро..</button>
 </div>
 <div id="alert-box"></div>
-<!-- Стрелки -->
-<span class="arrow arrow-left" onclick="showSoonAlert()">&#9664;</span>
-<span class="arrow arrow-right" onclick="showSoonAlert()">&#9654;</span>
 </div>
 </body>
 </html>
