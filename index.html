@@ -1,83 +1,182 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>shop</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
-            margin: 0;
-            color: black;
-        }
-        #main {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            position: relative;
-        }
-        #main img {
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.25s ease;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-        .arrow-button {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            margin: 0 20px;
-            color: black;
-            transition: transform 0.25s;
-        }
-        .arrow-button:hover {
-            transform: scale(1.2);
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 5px;
-            cursor: pointer;
-            border-radius: 10px;
-            width: 150px;
-            transition: background-color 0.25s, transform 0.25s;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #click-counter {
-            background-color: green;
-            color: white;
-            width: 50px;
-            text-align: center;
-            border-radius: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>shop</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f5f5f5;
+margin: 0;
+color: black;
+}
+#main {
+text-align: center;
+background: #fff;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+position: relative;
+}
+#main img {
+max-width: 100%;
+height: auto;
+transition: transform 0.25s ease;
+cursor: pointer;
+user-select: none;
+-webkit-user-drag: none;
+}
+button {
+background-color: #4CAF50;
+color: white;
+border: none;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 10px 5px;
+cursor: pointer;
+border-radius: 10px;
+width: 150px;
+transition: background-color 0.25s, transform 0.25s;
+}
+button:hover {
+background-color: #45a049;
+}
+#click-counter {
+background-color: green;
+color: white;
+width: 50px;
+height: 50px;
+line-height: 50px;
+border-radius: 50%;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+font-size: 20px;
+}
+.plus-one {
+position: absolute;
+color: green;
+font-size: 20px;
+animation: fadeOut 1s forwards;
+}
+@keyframes fadeOut {
+0% {
+opacity: 1;
+transform: translateY(0);
+}
+100% {
+opacity: 0;
+transform: translateY(-20px);
+}
+}
+@keyframes buttonAnimation {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.2);
+}
+100% {
+transform: scale(1);
+}
+}
+#alert-box {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 20px;
+border-radius: 10px;
+z-index: 1000;
+}
+.button-container {
+display: flex;
+justify-content: center;
+}
+</style>
+<script>
+let clickCount = 0;
+
+// функция для обновления и сохранения счётчика
+function updateClickCounter() {
+document.getElementById('click-counter').innerText = clickCount;
+localStorage.setItem('clickCount', clickCount);
+}
+
+function enlargeImage(event) {
+event.preventDefault();
+var img = event.target;
+img.style.transform = 'scale(1.2)';
+clickCount++;
+updateClickCounter();
+
+// создание надписи "+1"
+var plusOne = document.createElement('div');
+plusOne.className = 'plus-one';
+plusOne.innerText = '+1';
+plusOne.style.left = event.clientX - img.getBoundingClientRect().left + 'px';
+plusOne.style.top = event.clientY - img.getBoundingClientRect().top + 'px';
+document.getElementById('main').appendChild(plusOne);
+
+setTimeout(function() {
+img.style.transform = 'scale(1)';
+plusOne.remove();
+}, 1000); // через секунду элемент исчезнет
+}
+
+function resetCounter() {
+var button = document.getElementById('buy');
+button.style.transform = 'scale(1.2)';
+setTimeout(function() {
+button.style.transform = '';
+}, 250);
+
+// вывод всплывающего сообщения
+showAlert('Ожидайте листинга, больше информации в боте');
+}
+
+function showAlert(message) {
+var alertBox = document.getElementById('alert-box');
+alertBox.innerText = message;
+alertBox.style.display = 'block';
+setTimeout(function() {
+alertBox.style.display = 'none';
+}, 3000); // через 3 секунды сообщение исчезнет
+}
+
+// восстанавливаем счётчик из localStorage при загрузке страницы
+window.onload = function() {
+if (localStorage.getItem('clickCount')) {
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);
+updateClickCounter();
+}
+}
+</script>
 </head>
 <body>
 <div id="main">
-    <button class="arrow-button">&larr;</button>
-    <img src="your-image-url.jpg" alt="Image">
-    <button class="arrow-button">&rarr;</button>
+<h1>AndrewTap</h1>
+<img id="image" src="https://i.postimg.cc/3R7Jy52V/photo-2024-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
+<p>Все совпадения случайны. Персонаж выдумка автора</p>
+<div id="click-counter">0</div>
+<div class="button-container">
+<button id="buy" onclick="resetCounter()">Вывести монеты</button>
+<button disabled>Скоро..</button>
+</div>
+<div id="alert-box"></div>
 </div>
 </body>
 </html>
