@@ -106,14 +106,7 @@ z-index: 1000;
 display: flex;
 justify-content: center;
 }
-/* Полупрозрачная серая рамка */
-.title-container {
-background-color: rgba(128, 128, 128, 0.5); /* полупрозрачный серый /
-padding: 10px;
-border-radius: 10px; / скругленные углы */
-display: inline-block;
-margin-bottom: 20px;
-}
+/* Стрелки */
 .arrow {
 position: absolute;
 top: 50%;
@@ -133,9 +126,7 @@ right: 10px;
 </head>
 <body>
 <div id="main">
-<div class="title-container">
 <h1>AndrewTap</h1>
-</div>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
 <p>Все совпадения случайны. Персонаж выдумка автора</p>
 <div id="click-counter">0</div>
@@ -182,6 +173,7 @@ button.style.transform = 'scale(1.2)';
 setTimeout(function() {
 button.style.transform = '';
 }, 250);
+
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
@@ -193,7 +185,6 @@ setTimeout(function() {
 alertBox.style.display = 'none';
 }, 3000);
 }
-
 window.onload = function() {
 if (localStorage.getItem('clickCount')) {
 clickCount = parseInt(localStorage.getItem('clickCount'), 10);
