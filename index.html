@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible"content="ie=edge">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>shop</title>
 <style>
 body {
@@ -158,10 +158,11 @@ function enlargeImage(event) {
 event.preventDefault();
 var img = event.target;
 img.style.transform = 'scale(1.2)';
-if (document.getElementById('image').src === images[0]) {
+var currentImageSrc = document.getElementById('image').src;
+if (currentImageSrc.includes('photo-20-24-10-29-18-37-04-1-2.png')) {
 clickCount++;
 showPlusOne(event, '+1');
-} else {
+} else if (currentImageSrc.includes('2332323232.png')) {
 clickCount += 3;
 showPlusOne(event, '+3');
 }
@@ -176,8 +177,8 @@ function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
-plusOne.style.left = event.clientX - img.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - img.getBoundingClientRect().top + 'px';
+plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
+plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
