@@ -131,6 +131,7 @@ right: 10px;
 <div id="click-counter">0</div>
 <div class="button-container">
 <button id="buy" onclick="resetCounter()">Вывести монеты</button>
+<button disabled>Скоро..</button>
 </div>
 <div id="alert-box"></div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
@@ -183,21 +184,12 @@ setTimeout(function() {
 alertBox.style.display = 'none';
 }, 3000);
 }
-
-window.onload = function() {
-if (localStorage.getItem('clickCount')) {
-clickCount = parseInt(localStorage.getItem('clickCount'), 10);
-updateClickCounter();
-}
-
-document.getElementById('background-music').play();
-}
-
+// Массив изображений скинов
 const images = [
 "https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png",
 "https://i.postimg.cc/zX3NkkDv/2332323232.png"
 ];
-let currentIndex = 0;
+let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
 
 function changeImage(direction) {
 if (direction === 'left') {
@@ -206,6 +198,26 @@ currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
 currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
 }
 document.getElementById('image').src = images[currentIndex];
+// Сохраняем текущий индекс изображения в localStorage
+localStorage.setItem('currentImageIndex', currentIndex);
+}
+
+window.onload = function() {
+if (localStorage.getItem('clickCount')) {
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);
+updateClickCounter();
+}
+
+if (localStorage.getItem('currentImageIndex')) {
+currentIndex = parseInt(localStorage.getItem('currentImageIndex'), 10);
+document.getElementById('image').src = images[currentIndex];
+}
+
+document.getElementById('background-music').play();
+}
+
+function showSoonAlert() {
+showAlert('Скоро..');
 }
 </script>
 </div>
