@@ -90,6 +90,14 @@ transform: scale(1.2);
 transform: scale(1);
 }
 }
+@keyframes resetAnimation {
+0% {
+transform: scale(1);
+}
+100% {
+transform: scale(1.2);
+}
+}
 #alert-box {
 display: none;
 position: fixed;
@@ -131,7 +139,7 @@ right: 10px;
 <div id="click-counter">0</div>
 <div class="button-container">
 <button id="buy" onclick="resetCounter()">Вывести монеты</button>
-<button disabled>Скоро..</button>
+<button id="reset" onclick="resetCounterAndAnimation()">Обнулить результат</button>
 </div>
 <div id="alert-box"></div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
@@ -176,14 +184,19 @@ button.style.transform = '';
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
-function showAlert(message) {
-var alertBox = document.getElementById('alert-box');
-alertBox.innerText = message;
-alertBox.style.display = 'block';
+function resetCounterAndAnimation() {
+var button = document.getElementById('reset');
+button.style.animation = 'resetAnimation 0.5s';
 setTimeout(function() {
-alertBox.style.display = 'none';
-}, 3000);
+button.style.animation = '';
+}, 500);
+
+// Сброс счётчика нажатий
+clickCount = 0;
+updateClickCounter();
+localStorage.setItem('clickCount', clickCount);
 }
+
 // Массив изображений скинов
 const images = [
 "https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png",
@@ -216,8 +229,13 @@ document.getElementById('image').src = images[currentIndex];
 document.getElementById('background-music').play();
 }
 
-function showSoonAlert() {
-showAlert('Скоро..');
+function showAlert(message) {
+var alertBox = document.getElementById('alert-box');
+alertBox.innerText = message;
+alertBox.style.display = 'block';
+setTimeout(function() {
+alertBox.style.display = 'none';
+}, 3000);
 }
 </script>
 </div>
