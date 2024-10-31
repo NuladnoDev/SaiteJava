@@ -182,6 +182,7 @@ plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + '
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
+Изображение
 plusOne.remove();
 }, 1000);
 }
@@ -218,6 +219,10 @@ let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localSto
 
 function changeImage(direction) {
 if (direction === 'left') {
+if (clickCount < 300 && currentIndex === 1) {
+showAlert('Для разблокировки следующего скина нужно 300 коинов');
+return;
+}
 currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
 } else if (direction === 'right') {
 if (clickCount < 300 && currentIndex === 0) {
