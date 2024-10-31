@@ -123,9 +123,6 @@ color: black;
 cursor: pointer;
 user-select: none;
 }
-.arrow-left {
-left: 10px;
-}
 .arrow-right {
 right: 10px;
 }
@@ -143,8 +140,7 @@ right: 10px;
 </div>
 <div id="alert-box"></div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
-<!-- Стрелки -->
-<span class="arrow arrow-left" onclick="changeImage('left')">◀</span>
+<!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
 <script>
 let clickCount = 0;
@@ -217,16 +213,11 @@ const images = [
 let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
 
 function changeImage(direction) {
-if (direction === 'left' && currentIndex === 1 && clickCount < 300) {
-showAlert('Для разблокировки следующего скина нужно 300 коинов');
-return;
-} else if (direction === 'right' && currentIndex === 0 && clickCount < 300) {
+if (direction === 'right' && currentIndex === 0 && clickCount < 300) {
 showAlert('Для разблокировки следующего скина нужно 300 коинов');
 return;
 }
-currentIndex = (direction === 'left')
-? (currentIndex === 0 ? images.length - 1 : currentIndex - 1)
-: (currentIndex === images.length - 1 ? 0 : currentIndex + 1);
+currentIndex = (direction === 'right') ? (currentIndex === images.length - 1 ? 0 : currentIndex + 1) : currentIndex;
 document.getElementById('image').src = images[currentIndex];
 // Сохраняем текущий индекс изображения в localStorage
 localStorage.setItem('currentImageIndex', currentIndex);
