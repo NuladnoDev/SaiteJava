@@ -132,7 +132,7 @@ right: 10px;
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
-<p>Все совпадения случайны. Персонаж выдумка автора</p>
+<p>Все совпадения случайны. Персонаж выдумка автора</п>
 <div id="click-counter">0</div>
 <div class="button-container">
 <button id="buy" onclick="resetCounter()">Вывести монеты</button>
@@ -213,8 +213,8 @@ const images = [
 let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
 
 function changeImage(direction) {
-if (direction === 'right' && currentIndex === 0 && clickCount < 300) {
-showAlert('Для разблокировки следующего скина нужно 300 коинов');
+if (direction === 'right' && currentIndex === 0 && clickCount < 1000) {
+showAlert('Для разблокировки следующего скина нужно 1000 коинов');
 return;
 }
 currentIndex = (direction === 'right') ? (currentIndex === images.length - 1 ? 0 : currentIndex + 1) : currentIndex;
