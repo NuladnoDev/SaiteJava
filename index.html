@@ -223,11 +223,10 @@ return;
 } else if (direction === 'right' && currentIndex === 0 && clickCount < 300) {
 showAlert('Для разблокировки следующего скина нужно 300 коинов');
 return;
-} else {
-currentIndex = (direction === 'left') 
+}
+currentIndex = (direction === 'left')
 ? (currentIndex === 0 ? images.length - 1 : currentIndex - 1)
 : (currentIndex === images.length - 1 ? 0 : currentIndex + 1);
-}
 document.getElementById('image').src = images[currentIndex];
 // Сохраняем текущий индекс изображения в localStorage
 localStorage.setItem('currentImageIndex', currentIndex);
