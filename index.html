@@ -146,11 +146,13 @@ right: 10px;
 <script>
 let clickCount = 0;
 
+// Обновление счётчика на экране
 function updateClickCounter() {
 document.getElementById('click-counter').innerText = clickCount;
-localStorage.setItem('clickCount', clickCount);
+localStorage.setItem('clickCount', clickCount);  // Сохранение кликов в localStorage
 }
 
+// Увеличение счётчика при клике по изображению
 function enlargeImage(event) {
 event.preventDefault();
 var img = event.target;
@@ -226,7 +228,7 @@ localStorage.setItem('currentImageIndex', currentIndex);
 
 window.onload = function() {
 if (localStorage.getItem('clickCount')) {
-clickCount = parseInt(localStorage.getItem('clickCount'), 10);
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);  // Получаем клики из localStorage
 updateClickCounter();
 }
 
@@ -238,6 +240,7 @@ document.getElementById('image').src = images[currentIndex];
 document.getElementById('background-music').play();
 }
 
+// Функция для показа всплывающего окна с сообщением
 function showAlert(message) {
 var alertBox = document.getElementById('alert-box');
 alertBox.innerText = message;
