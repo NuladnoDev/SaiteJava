@@ -18,7 +18,7 @@ color: black;
 }
 #main {
 text-align: center;
-background: #fff; 
+background: #fff;
 padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
@@ -146,13 +146,11 @@ right: 10px;
 <script>
 let clickCount = 0;
 
-// Обновление счётчика на экране
 function updateClickCounter() {
 document.getElementById('click-counter').innerText = clickCount;
-localStorage.setItem('clickCount', clickCount);  // Сохранение кликов в localStorage
+localStorage.setItem('clickCount', clickCount);
 }
 
-// Увеличение счётчика при клике по изображению
 function enlargeImage(event) {
 event.preventDefault();
 var img = event.target;
@@ -171,7 +169,7 @@ setTimeout(function() {
 img.style.transform = 'scale(1)';
 }, 1000);
 }
-
+html
 function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
@@ -191,7 +189,6 @@ button.style.transform = 'scale(1.2)';
 setTimeout(function() {
 button.style.transform = '';
 }, 250);
-
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
@@ -228,7 +225,7 @@ localStorage.setItem('currentImageIndex', currentIndex);
 
 window.onload = function() {
 if (localStorage.getItem('clickCount')) {
-clickCount = parseInt(localStorage.getItem('clickCount'), 10);  // Получаем клики из localStorage
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);
 updateClickCounter();
 }
 
@@ -240,7 +237,6 @@ document.getElementById('image').src = images[currentIndex];
 document.getElementById('background-music').play();
 }
 
-// Функция для показа всплывающего окна с сообщением
 function showAlert(message) {
 var alertBox = document.getElementById('alert-box');
 alertBox.innerText = message;
