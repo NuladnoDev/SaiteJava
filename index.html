@@ -126,20 +126,41 @@ user-select: none;
 .arrow-right {
 right: 10px;
 }
+#boosts-container {
+display: none;
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 20px;
+box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px 10px 0 0;
+z-index: 1001;
+}
+#boosts-container button {
+margin-bottom: 10px;
+}
 </style>
 </head>
 <body>
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
-<p>Все совпадения случайны. Персонаж выдумка автора</п>
+<p>Все совпадения случайны. Персонаж выдумка автора.</p>
 <div id="click-counter">0</div>
 <div class="button-container">
 <button id="buy" onclick="resetCounter()">Вывести монеты</button>
 <button id="reset" onclick="resetCounterAndAnimation()">Обнулить результат</button>
-<button disabled>Скоро</button>
+<button id="boosts" onclick="toggleBoosts()">Бусты</button>
 </div>
 <div id="alert-box"></div>
+<div id="boosts-container">
+<button onclick="alert('тест')">тест</button>
+<button onclick="alert('тест')">тест</button>
+<button onclick="alert('тест')">тест</button>
+</div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
@@ -169,7 +190,7 @@ setTimeout(function() {
 img.style.transform = 'scale(1)';
 }, 1000);
 }
-html
+
 function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
@@ -210,6 +231,7 @@ const images = [
 "https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png",
 "https://i.postimg.cc/zX3NkkDv/2332323232.png"
 ];
+
 let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
 
 function changeImage(direction) {
@@ -244,6 +266,11 @@ alertBox.style.display = 'block';
 setTimeout(function() {
 alertBox.style.display = 'none';
 }, 3000);
+}
+
+function toggleBoosts() {
+var boostsContainer = document.getElementById('boosts-container');
+boostsContainer.style.display = (boostsContainer.style.display === 'none' || boostsContainer.style.display === '') ? 'block' : 'none';
 }
 </script>
 </div>
