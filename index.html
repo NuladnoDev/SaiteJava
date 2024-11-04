@@ -165,7 +165,6 @@ display: block;
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
-<!-- Дополнительные скрипты -->
 <script>
 let clickCount = 0;
 
@@ -192,13 +191,12 @@ setTimeout(function() {
 img.style.transform = 'scale(1)';
 }, 1000);
 }
-
 function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
@@ -282,5 +280,6 @@ overlay.classList.remove('show');
 }
 }
 </script>
+</div>
 </body>
 </html>
