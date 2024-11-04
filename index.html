@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>shop</title>
+<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <style>
 body {
 font-family: Arial, sans-serif;
@@ -159,13 +160,8 @@ z-index: 1000;
 display: block;
 }
 </style>
-<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-<script>
-	new Snow ();
-</script>
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
@@ -184,6 +180,10 @@ display: block;
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
+<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+<script>
+new Snow();
+</script>
 <script>
 let clickCount = 0;
 
@@ -216,7 +216,7 @@ var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
