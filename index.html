@@ -199,16 +199,12 @@ var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 }
 
 function resetCounter() {
-var button = document.getElementById('buy');
-button.style.transform = 'scale(1.2)';
-setTimeout(function() {
-button.style.transform = '';
-}, 250);
+updateClickCounter();
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
