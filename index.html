@@ -20,7 +20,6 @@ justify-content: center;
 align-items: center;
 background-color: #f5f5f5;
 color: black;
-position: relative;
 }
 #main {
 text-align: center;
@@ -29,7 +28,6 @@ padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 position: relative;
-z-index: 1;
 }
 #main img {
 max-width: 100%;
@@ -167,8 +165,6 @@ display: block;
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
-</div>
-<!-- Дополнительные скрипты -->
 <script>
 let clickCount = 0;
 
@@ -190,17 +186,17 @@ clickCount += 3;
 showPlusOne(event, '+3');
 }
 updateClickCounter();
+
 setTimeout(function() {
 img.style.transform = 'scale(1)';
 }, 1000);
 }
-
 function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
@@ -209,7 +205,11 @@ plusOne.remove();
 }
 
 function resetCounter() {
-updateClickCounter();
+var button = document.getElementById('buy');
+button.style.transform = 'scale(1.2)';
+setTimeout(function() {
+button.style.transform = '';
+}, 250);
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
@@ -280,5 +280,6 @@ overlay.classList.remove('show');
 }
 }
 </script>
+</div>
 </body>
 </html>
