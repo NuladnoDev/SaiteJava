@@ -58,8 +58,11 @@ max-width: 100%;
 height: auto;
 transition: transform 0.25s ease;
 cursor: pointer;
-user-select: none;
--webkit-user-drag: none;
+user-select: none; / Отключает возможность выделения /
+-webkit-user-select: none; / Отключает для Safari /
+-moz-user-select: none; / Отключает для Firefox /
+-ms-user-select: none; / Отключает для Internet Explorer /
+pointer-events: none; / Отключает все типы событий для элемента /
 }
 button {
 background-color: #42aaf5;
