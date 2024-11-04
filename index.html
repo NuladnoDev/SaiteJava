@@ -118,11 +118,7 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%);
 right: 10px;
-width: 64px;
-height: 64px;
-background-image: url('arrow-right.png');
-background-size: cover;
-background-repeat: no-repeat;
+font-size: 2em; /* Размер смайлика */
 cursor: pointer;
 user-select: none;
 }
@@ -180,7 +176,7 @@ display: block;
 <div class="overlay" onclick="toggleBoosts()"></div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
-<span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
+<div class="arrow-right" onclick="changeImage('right')">➩</div>
 <script>
 let clickCount = 0;
 
