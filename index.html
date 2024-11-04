@@ -169,17 +169,20 @@ display: block;
 <!-- Включаем jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Подключаем скрипт снежинок -->
-<script src="https://daruse.ru/assets/js/snowfall.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
 <script>
-$(document).ready(function(){
-$(document).snowfall({
-flakeCount: 300,
-flakeColor: '#a6e7ff',
-minSize: 10,
-maxSize: 20,
-round: true,
-shadow: true
-});
+new Snow({
+iconColor: '#a6e7ff',
+iconSize: 15,
+showSnowBalls: true,
+showSnowBallsIsMobile: true,
+showSnowflakes: true,
+countSnowflake: 100,
+snowBallsLength: 10,
+snowBallIterations: 40,
+snowBallupNum: 1,
+snowBallIterationsInterval: 1000,
+clearSnowBalls: 20000
 });
 </script>
 <!-- Дополнительные скрипты -->
