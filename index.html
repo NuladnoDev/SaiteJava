@@ -146,6 +146,7 @@ z-index: 1000;
 display: block;
 }
 </style>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div id="main">
@@ -282,5 +283,12 @@ overlay.classList.remove('show');
 }
 }
 </script>
+  <script src='snowfall.js'></script>
+  <script src="js/snowfall.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $(document).snowfall({image :"img/snow4.png", minSize: 10, maxSize:20});
+      });
+  </script>
 </body>
 </html>
