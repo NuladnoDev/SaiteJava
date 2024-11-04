@@ -68,17 +68,6 @@ top: 50%;
 transform: translate(-50%, -50%);
 font-size: 20px;
 }
-.plus-one {
-position: absolute;
-color: #42aaf5;
-font-size: 20px;
-animation: fadeInOut 3s forwards;
-}
-@keyframes fadeInOut {
-0% { opacity: 0; transform: translateY(-20px); }
-50% { opacity: 1; transform: translateY(0px); }
-100% { opacity: 0; transform: translateY(-20px); }
-}
 #alert-box {
 display: none;
 position: fixed;
@@ -90,11 +79,6 @@ color: white;
 padding: 20px;
 border-radius: 10px;
 z-index: 1000;
-animation: fadeIn 0.5s;
-}
-@keyframes fadeIn {
-from { opacity: 0; transform: scale(0.9); }
-to { opacity: 1; transform: scale(1); }
 }
 .button-container {
 display: flex;
@@ -194,15 +178,6 @@ img.style.transform = 'scale(1)';
 }, 1000);
 }
 
-function showPlusOne(event, text) {
-var plusOne = document.createElement('div');
-plusOne.className = 'plus-one';
-plusOne.innerText = text;
-plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
-document.getElementById('main').appendChild(plusOne);
-}
-
 function resetCounter() {
 updateClickCounter();
 showAlert('Ожидайте листинга, больше информации в боте');
@@ -219,11 +194,6 @@ button.style.animation = '';
 clickCount = 0;
 updateClickCounter();
 localStorage.setItem('clickCount', clickCount);
-}
-
-// Сброс счётчика нажатий при загрузке
-window.onload = function() {
-document.getElementById('click-counter').innerText = clickCount;
 }
 
 // Массив изображений скинов
@@ -243,6 +213,20 @@ currentIndex = (direction === 'right') ? (currentIndex === images.length - 1 ? 0
 document.getElementById('image').src = images[currentIndex];
 // Сохраняем текущий индекс изображения в localStorage
 localStorage.setItem('currentImageIndex', currentIndex);
+}
+
+window.onload = function() {
+if (localStorage.getItem('clickCount')) {
+clickCount = parseInt(localStorage.getItem('clickCount'), 10);
+updateClickCounter();
+}
+
+if (localStorage.getItem('currentImageIndex')) {
+currentIndex = parseInt(localStorage.getItem('currentImageIndex'), 10);
+document.getElementById('image').src = images[currentIndex];
+}
+
+document.getElementById('background-music').play();
 }
 
 function showAlert(message) {
