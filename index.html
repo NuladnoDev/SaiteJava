@@ -146,113 +146,9 @@ z-index: 1000;
 .overlay.show {
 display: block;
 }
-.loader {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #fff;
-z-index: 2;
-}
-
-.loader-icon-1 {
-font-size: 60px;
-color: #4A90E2;
-animation: rotate 1s infinite linear;
-}
-
-.loader-text {
-margin-top: 20px;
-font-size: 20px;
-color: #4A90E2;
-}
-
-.initial-snow {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-align-items: flex-start;
-z-index: 2;
-}
-
-.snow {
-font-size: 24px;
-color: #4A90E2;
-animation: fall 10s infinite linear;
-}
-
-@keyframes rotate {
-0% {
-transform: rotate(0deg);
-}
-100% {
-transform: rotate(360deg);
-}
-}
-
-@keyframes fall {
-0% {
-transform: translateY(-100%);
-}
-100% {
-transform: translateY(100%);
-}
-}
 </style>
 </head>
 <body>
-<div class="loader">
-<div class="loader-icon-1">&#10052;</div>
-<div class="loader-text">Loading...</div>
-</div>
-<div class="main">
-<div class="initial-snow">
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-<div class="snow">&#10052;</div>
-</div>
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
@@ -294,11 +190,11 @@ clickCount += 3;
 showPlusOne(event, '+3');
 }
 updateClickCounter();
-
 setTimeout(function() {
 img.style.transform = 'scale(1)';
 }, 1000);
 }
+
 function showPlusOne(event, text) {
 var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
@@ -313,11 +209,7 @@ plusOne.remove();
 }
 
 function resetCounter() {
-var button = document.getElementById('buy');
-button.style.transform = 'scale(1.2)';
-setTimeout(function() {
-button.style.transform = '';
-}, 250);
+updateClickCounter();
 showAlert('Ожидайте листинга, больше информации в боте');
 }
 
