@@ -12,8 +12,20 @@
 }
 
 h1 {
-    font-family: 'drukwidecyr-bold', sans-serif;
+font-family: 'drukwidecyr-bold', sans-serif;
+user-select: none; /* Отключает возможность выделения */
+-webkit-user-select: none; /* Отключает для Safari */
+-moz-user-select: none; /* Отключает для Firefox */
+-ms-user-select: none; /* Отключает для Internet Explorer */
 }
+
+p {
+user-select: none; /* Отключает возможность выделения */
+-webkit-user-select: none; /* Отключает для Safari */
+-moz-user-select: none; /* Отключает для Firefox */
+-ms-user-select: none; /* Отключает для Internet Explorer */
+}
+
 html, body {
   height: 100vh;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
