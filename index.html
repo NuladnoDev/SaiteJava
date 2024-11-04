@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>shop</title>
-<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <style>
 html, body {
 margin: 0;
@@ -21,7 +20,7 @@ justify-content: center;
 align-items: center;
 background-color: #f5f5f5;
 color: black;
-position: relative; /* Для слоя снежинок */
+position: relative;
 }
 #main {
 text-align: center;
@@ -30,7 +29,7 @@ padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 position: relative;
-z-index: 1; /* Поставим содержимое на передний план */
+z-index: 1;
 }
 #main img {
 max-width: 100%;
@@ -147,19 +146,113 @@ z-index: 1000;
 .overlay.show {
 display: block;
 }
-#snowflakes {
+.loader {
 position: absolute;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-pointer-events: none; /* Для предотвращения захвата событий клика */
-z-index: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #fff;
+z-index: 2;
+}
+
+.loader-icon-1 {
+font-size: 60px;
+color: #4A90E2;
+animation: rotate 1s infinite linear;
+}
+
+.loader-text {
+margin-top: 20px;
+font-size: 20px;
+color: #4A90E2;
+}
+
+.initial-snow {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: flex-start;
+z-index: 2;
+}
+
+.snow {
+font-size: 24px;
+color: #4A90E2;
+animation: fall 10s infinite linear;
+}
+
+@keyframes rotate {
+0% {
+transform: rotate(0deg);
+}
+100% {
+transform: rotate(360deg);
+}
+}
+
+@keyframes fall {
+0% {
+transform: translateY(-100%);
+}
+100% {
+transform: translateY(100%);
+}
 }
 </style>
 </head>
 <body>
-<div id="snowflakes"></div>
+<div class="loader">
+<div class="loader-icon-1">&#10052;</div>
+<div class="loader-text">Loading...</div>
+</div>
+<div class="main">
+<div class="initial-snow">
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+<div class="snow">&#10052;</div>
+</div>
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
@@ -179,13 +272,6 @@ z-index: 0;
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
 </div>
-<!-- Включаем jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Подключаем скрипт снежинок -->
-<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-<script>
-new Snow ();
-</script>
 <!-- Дополнительные скрипты -->
 <script>
 let clickCount = 0;
