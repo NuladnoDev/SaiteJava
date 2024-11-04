@@ -24,6 +24,8 @@ padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 position: relative;
+width: 100%; /* измененный для полной ширины */
+height: 100%; /* измененный для полной высоты */
 }
 #main img {
 max-width: 100%;
@@ -182,7 +184,19 @@ display: block;
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
 <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
 <script>
-new Snow();
+new Snow({
+iconColor: '#a6e7ff',
+iconSize: 15,
+showSnowBalls: true,
+showSnowBallsIsMobile: true,
+showSnowflakes: true,
+countSnowflake: 100,
+snowBallsLength: 10,
+snowBallIterations: 40,
+snowBallupNum: 1,
+snowBallIterationsInterval: 1000,
+clearSnowBalls: 20000
+});
 </script>
 <script>
 let clickCount = 0;
@@ -216,7 +230,7 @@ var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
 
 setTimeout(function() {
@@ -253,7 +267,6 @@ const images = [
 ];
 
 let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
-
 function changeImage(direction) {
 if (direction === 'right' && currentIndex === 0 && clickCount < 1000) {
 showAlert('Для разблокировки следующего скина нужно 1000 коинов');
