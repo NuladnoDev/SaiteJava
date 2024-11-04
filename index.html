@@ -170,9 +170,16 @@ display: block;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Подключаем скрипт снежинок -->
 <script src="https://daruse.ru/assets/js/snowfall.js"></script>
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
-$(document).snowfall();
+$(document).snowfall({
+flakeCount: 300,
+flakeColor: '#a6e7ff',
+minSize: 10,
+maxSize: 20,
+round: true,
+shadow: true
+});
 });
 </script>
 <!-- Дополнительные скрипты -->
