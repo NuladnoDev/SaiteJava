@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>shop</title>
-<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
+<link href="/snowFlakes/snow.min.css" rel="stylesheet">
 <style>
 html, body {
 margin: 0;
 padding: 0;
 height: 100%;
 width: 100%;
-overflow: hidden; /* Добавлено для предотвращения прокрутки */
+overflow: hidden;
 }
 body {
 font-family: Arial, sans-serif;
@@ -21,7 +21,6 @@ justify-content: center;
 align-items: center;
 background-color: #f5f5f5;
 color: black;
-position: relative; /* Изменено для использования элемента snowflakes */
 }
 #main {
 text-align: center;
@@ -30,7 +29,6 @@ padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 position: relative;
-z-index: 10; /* Изменено для размещения над снежинками */
 }
 #main img {
 max-width: 100%;
@@ -147,19 +145,13 @@ z-index: 1000;
 .overlay.show {
 display: block;
 }
-#snowflakes {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none; /* Добавлено для предотвращения вмешательства со взаимодействием с элементами /
-z-index: 1; / Изменено для размещения под основными элементами */
-}
 </style>
 </head>
 <body>
-<div id="snowflakes"></div> <!-- Добавлено для размещения снежинок -->
+<script src="/snowFlakes/Snow.js"></script>
+<script>
+new Snow();
+</script>
 <div id="main">
 <h1>AndrewTap</h1>
 <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
@@ -178,23 +170,6 @@ z-index: 1; / Изменено для размещения под основны
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
-<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-<script>
-new Snow({
-target: 'snowflakes', // Добавлено для указания контейнера для снежинок
-iconColor: '#a6e7ff',
-iconSize: 15,
-showSnowBalls: true,
-showSnowBallsIsMobile: true,
-showSnowflakes: true,
-countSnowflake: 100,
-snowBallsLength: 10,
-snowBallIterations: 40,
-snowBallupNum: 1,
-snowBallIterationsInterval: 1000,
-clearSnowBalls: 20000
-});
-</script>
 <script>
 let clickCount = 0;
 
