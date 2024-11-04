@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>shop</title>
-<link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <style>
 html, body {
 margin: 0;
@@ -73,17 +72,12 @@ font-size: 20px;
 position: absolute;
 color: #42aaf5;
 font-size: 20px;
-animation: fadeOut 1s forwards;
+animation: fadeInOut 3s forwards;
 }
-@keyframes fadeOut {
-0% {
-opacity: 1;
-transform: translateY(0);
-}
-100% {
-opacity: 0;
-transform: translateY(-20px);
-}
+@keyframes fadeInOut {
+0% { opacity: 0; transform: translateY(-20px); }
+50% { opacity: 1; transform: translateY(0px); }
+100% { opacity: 0; transform: translateY(-20px); }
 }
 #alert-box {
 display: none;
@@ -96,6 +90,11 @@ color: white;
 padding: 20px;
 border-radius: 10px;
 z-index: 1000;
+animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: scale(0.9); }
+to { opacity: 1; transform: scale(1); }
 }
 .button-container {
 display: flex;
@@ -167,13 +166,6 @@ display: block;
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
 </div>
-<!-- Включаем jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Подключаем скрипт снежинок -->
-<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
-<script>
-new Snow ();
-</script>
 <!-- Дополнительные скрипты -->
 <script>
 let clickCount = 0;
@@ -207,12 +199,8 @@ var plusOne = document.createElement('div');
 plusOne.className = 'plus-one';
 plusOne.innerText = text;
 plusOne.style.left = event.clientX - event.target.getBoundingClientRect().left + 'px';
-plusOne.style.top = event.clientY - event.getBoundingClientRect().top + 'px';
+plusOne.style.top = event.clientY - event.target.getBoundingClientRect().top + 'px';
 document.getElementById('main').appendChild(plusOne);
-
-setTimeout(function() {
-plusOne.remove();
-}, 1000);
 }
 
 function resetCounter() {
@@ -237,6 +225,11 @@ updateClickCounter();
 localStorage.setItem('clickCount', clickCount);
 }
 
+// Сброс счётчика нажатий при загрузке
+window.onload = function() {
+document.getElementById('click-counter').innerText = clickCount;
+}
+
 // Массив изображений скинов
 const images = [
 "https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png",
@@ -254,20 +247,6 @@ currentIndex = (direction === 'right') ? (currentIndex === images.length - 1 ? 0
 document.getElementById('image').src = images[currentIndex];
 // Сохраняем текущий индекс изображения в localStorage
 localStorage.setItem('currentImageIndex', currentIndex);
-}
-
-window.onload = function() {
-if (localStorage.getItem('clickCount')) {
-clickCount = parseInt(localStorage.getItem('clickCount'), 10);
-updateClickCounter();
-}
-
-if (localStorage.getItem('currentImageIndex')) {
-currentIndex = parseInt(localStorage.getItem('currentImageIndex'), 10);
-document.getElementById('image').src = images[currentIndex];
-}
-
-document.getElementById('background-music').play();
 }
 
 function showAlert(message) {
