@@ -129,18 +129,33 @@ right: 10px;
 #boosts-container {
 display: none;
 position: fixed;
-bottom: 0;
+bottom: -50%;
 left: 0;
 width: 100%;
+height: 50%;
 background-color: rgba(0, 0, 0, 0.8);
 color: white;
 padding: 20px;
 box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px 10px 0 0;
 z-index: 1001;
+transition: bottom 0.5s;
 }
-#boosts-container button {
-margin-bottom: 10px;
+#boosts-container.show {
+bottom: 0;
+}
+.overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 1000;
+}
+.overlay.show {
+display: block;
 }
 </style>
 </head>
@@ -158,9 +173,8 @@ margin-bottom: 10px;
 <div id="alert-box"></div>
 <div id="boosts-container">
 <button onclick="alert('тест')">тест</button>
-<button onclick="alert('тест')">тест</button>
-<button onclick="alert('тест')">тест</button>
 </div>
+<div class="overlay" onclick="toggleBoosts()"></div>
 <audio id="background-music" src="YOUR_MUSIC_FILE_URL" loop></audio>
 <!-- Стрелка -->
 <span class="arrow arrow-right" onclick="changeImage('right')">▶</span>
@@ -270,7 +284,14 @@ alertBox.style.display = 'none';
 
 function toggleBoosts() {
 var boostsContainer = document.getElementById('boosts-container');
-boostsContainer.style.display = (boostsContainer.style.display === 'none' || boostsContainer.style.display === '') ? 'block' : 'none';
+var overlay = document.querySelector('.overlay');
+if (boostsContainer.style.display === 'none' || boostsContainer.style.display === '') {
+boostsContainer.classList.add('show');
+overlay.classList.add('show');
+} else {
+boostsContainer.classList.remove('show');
+overlay.classList.remove('show');
+}
 }
 </script>
 </div>
