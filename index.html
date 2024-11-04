@@ -7,14 +7,18 @@
 <title>shop</title>
 <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 <style>
+html, body {
+margin: 0;
+padding: 0;
+height: 100%;
+width: 100%; /* обеспечение полноэкранного покрытия */
+}
 body {
 font-family: Arial, sans-serif;
 display: flex;
 justify-content: center;
 align-items: center;
-height: 100vh;
 background-color: #f5f5f5;
-margin: 0;
 color: black;
 }
 #main {
@@ -24,8 +28,6 @@ padding: 20px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 position: relative;
-width: 100%; /* измененный для полной ширины */
-height: 100%; /* измененный для полной высоты */
 }
 #main img {
 max-width: 100%;
