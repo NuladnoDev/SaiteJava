@@ -57,10 +57,13 @@ max-width: 100%;
 height: auto;
 transition: transform 0.25s ease;
 cursor: pointer;
-user-select: none;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
+user-select: none; /* Отключаем выделение */
+-webkit-user-select: none; /* Для Safari и Android */
+-moz-user-select: none; /* Для Firefox */
+-ms-user-select: none; /* Для IE и Edge */
+pointer-events: auto; /* Включаем события кликов */
+user-drag: none; /* Отключаем перетаскивание изображения */
+draggable: false; /* Отключаем возможность перетаскивания */
 }
 button {
 background-color: #42aaf5;
