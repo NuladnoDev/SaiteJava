@@ -30,7 +30,7 @@
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: absolute;
-            align-items: center;
+            align-items: absolute;
             background-color: #f5f5f5;
             color: black;
             position: relative;
@@ -65,7 +65,7 @@
             text-decoration: none;
             display: inline-block;
             font-size: 14px;
-            margin: 5px 3px;
+            margin: 5px; /* Убираем margin между кнопками */
             cursor: pointer;
             border-radius: 10px;
             width: 120px;
@@ -93,7 +93,13 @@
             border: 2px solid white;
             box-sizing: border-box;
         }
-
+        .button-container {
+            display: flex; /* Используем flex для размещения кнопок рядом */
+            justify-content: center; /* Центрируем кнопки по горизонтали */
+            align-items: center; /* Выравниваем кнопки по вертикали */
+            flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+            margin-top: 10px; /* Отступ сверху (по желанию) */
+        }
         .plus-one {
             position: absolute;
             color: #42aaf5;
