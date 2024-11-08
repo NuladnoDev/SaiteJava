@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AndrewTap</title>
     <style>
+        
         @font-face {
             font-family: 'drukwidecyr-bold';
-            src: url('druck-wide-cyr-bold.otf') format('truetype');
+            src: url('drukwidecyr-bold.otf') format('truetype');
         }
 
         h1 {
@@ -27,6 +28,7 @@
         }
 
         body {
+            
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: absolute;
@@ -38,7 +40,7 @@
 
         #main {
             text-align: center;
-            background: #fff;
+            background: radial-gradient(ellipse at bottom, #ffffff 0%, #daddee 100%);
             padding: 5px 35px 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -200,11 +202,12 @@
             cursor: pointer;
             user-select: none;
         }
+        
     </style>
     <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
 <script>
     new Snow();
 </script>
@@ -290,7 +293,7 @@
             setTimeout(function() {
                 button.style.transform = '';
             }, 250);
-            showAlert('Ожидайте листинга, больше информации в боте');
+            showAlert('...');
         }
 
         function resetCounterAndAnimation() {
