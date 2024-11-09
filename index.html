@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="ru">
 <head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/0.8.0/Tone.min.js'></script>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/light.css" id="theme-link">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AndrewTap</title>
@@ -19,12 +22,21 @@
 
         p {
             user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         html, body {
             height: 100vh;
             background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
             overflow: hidden;
+            user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         body {
@@ -36,6 +48,11 @@
             background-color: #f5f5f5;
             color: black;
             position: relative;
+            user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         #main {
@@ -49,6 +66,11 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
+            user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         #main img {
@@ -56,6 +78,11 @@
             height: auto;
             transition: transform 0.25s ease;
             cursor: pointer;
+            user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         button {
@@ -79,21 +106,22 @@
         }
 
         #click-counter {
-            background-color: #42aaf5;
-            color: white;
+            
+            font-family: 'drukwidecyr-bold';
+            color: black;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 50px;
             height: 50px;
-            font-size: 14px;
+            font-size: 45px;
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 9%;
             transform: translate(-50%, -50%);
-            border: 2px solid white;
-            box-sizing: border-box;
+            
+          
         }
         .button-container {
             display: flex; /* Используем flex для размещения кнопок рядом */
@@ -212,7 +240,7 @@
     new Snow();
 </script>
 <div id="main">
-    <h1>AndrewTap</h1>
+    <h1>ㅤㅤㅤ</h1>
     <img id="image" src="https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png" alt="shop" onclick="enlargeImage(event)" oncontextmenu="return false;">
     <p>Все совпадения случайны. Персонаж выдумка автора.</p>
     <div id="click-counter">0</div>
@@ -226,7 +254,7 @@
         <button onclick="alert('тест')">тест</button>
     </div>
     <div class="overlay" onclick="toggleBoosts()"></div>
-    <audio id="background-music" src="audio.mp3" loop></audio>
+    <audio id="background-music" src="test" loop></audio>
     <div class="arrow-right" onclick="changeImage('right')">➩</div>
     <script>
         let clickCount = 0;
@@ -252,9 +280,9 @@
                 resetCounterAndAnimation();
                 return;
             }
-
+            
             var img = event.target;
-            img.style.transform = 'scale(1.2)';
+            img.style.transform = 'scale(0.9)';
             var currentImageSrc = document.getElementById('image').src;
 
             if (currentImageSrc.includes('photo-20-24-10-29-18-37-04-1-2.png')) {
@@ -266,6 +294,12 @@
             } else if (currentImageSrc.includes('hjp5qd54/oue.png')) {
                 clickCount += 5;
                 showPlusOne(event, '+5');
+            } else if (currentImageSrc.includes('dfolkfdfdfd.png')) {
+                clickCount += 8;
+                showPlusOne(event, '+8');
+            } else if (currentImageSrc.includes('234.png')) {
+                clickCount += 10;
+                showPlusOne(event, '+10');
             }
             updateClickCounter();
 
@@ -320,7 +354,9 @@
         const images = [
             "https://i.postimg.cc/0NjsMk4z/photo-20-24-10-29-18-37-04-1-2.png",
             "https://i.postimg.cc/zX3NkkDv/2332323232.png",
-            "https://i.postimg.cc/hjp5qd54/oue.png"
+            "https://i.postimg.cc/hjp5qd54/oue.png",
+            "https://i.postimg.cc/y8QZLPfn/dfolkfdfdfd.png",
+            "https://i.postimg.cc/MT1Rm394/234.png"
         ];
 
         let currentIndex = localStorage.getItem('currentImageIndex') ? parseInt(localStorage.getItem('currentImageIndex')) : 0;
@@ -331,7 +367,15 @@
                 return;
             }
             if (direction === 'right' && currentIndex === 1 && clickCount < 3000) {
-                showAlert('Для разблокировки третьего скина нужно 3000 коинов');
+                showAlert('Для разблокировки следующего скина нужно 3000 коинов');
+                return;
+            }
+            if (direction === 'right' && currentIndex === 2 && clickCount < 5000) {
+                showAlert('Для разблокировки следующего скина нужно 5000 коинов');
+                return
+            }
+            if (direction === 'right' && currentIndex === 3 && clickCount < 8000) {
+                showAlert('Для разблокировки следующего скина нужно 8000 коинов');
                 return;
             }
 
